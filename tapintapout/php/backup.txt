@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tap in Tap Out | Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style-home.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Tap in Tap Out</div>
+        <div class="nav-links">
+            <a href="../php/login.php" class="btn-login">Login</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <h1>Smart Transit <br><span>Made Simple</span></h1>
+        <p>
+            Tap in Tap Out is a next-generation automated ticketing system designed 
+            to streamline public transportation. Track your journeys, manage your wallet, 
+            and travel seamlessly with just a tap.
+        </p>
+        <div class="hero-btns">
+            <a href="../php/login.php" class="btn btn-primary">Start Your Journey</a>
+        </div>
+    </header>
+
+    <!-- Developers Section -->
+    <section class="team-section">
+        <h2 class="section-title">Meet the Developers</h2>
+        <div class="team-grid">
+            <div class="dev-card">
+                <img src="rafit.jpg" alt="MD RAFIT" class="dev-avatar-img">
+                <h3 class="dev-name">MD RAFIT</h3>
+                <div class="dev-role">Team Lead</div>
+                <div class="dev-info">
+                    <p>ID: 23-50418-1</p>
+                    <p>Dept: CSE</p>
+                </div>
+            </div>
+            <div class="dev-card">
+                <img src="developer2.jpg" alt="MD RAIHANUL ISLAM RUDRA" class="dev-avatar-img">
+                <h3 class="dev-name">MD RAIHANUL ISLAM RUDRA</h3>
+                <div class="dev-role">Backend Developer</div>
+                <div class="dev-info">
+                    <p>ID: 23-1-XX</p>
+                    <p>Dept: CSE</p>
+                </div>
+            </div>
+            <div class="dev-card">
+                <img src="omi.jpg" alt="KAMRUN NAHAR OMI" class="dev-avatar-img">
+                <h3 class="dev-name">KAMRUN NAHAR OMI</h3>
+                <div class="dev-role">Frontend Dev</div>
+                <div class="dev-info">
+                    <p>ID: 23-1-XX</p>
+                    <p>Dept: CSE</p>
+                </div>
+            </div>
+            <div class="dev-card">
+                <img src="leana.jpg" alt="ZARIN TASNIM LEANA" class="dev-avatar-img">
+                <h3 class="dev-name">ZARIN TASNIM LEANA</h3>
+                <div class="dev-role">Database Admin</div>
+                <div class="dev-info">
+                    <p>ID: 23-1-XX</p>
+                    <p>Dept: CSE</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        &copy; 2026 Tap in Tap Out. All rights reserved.
+    </footer>
+
+    <script src="../js/script-home.js"></script>
+</body>
+</html>

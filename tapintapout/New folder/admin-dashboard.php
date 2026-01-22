@@ -1,0 +1,115 @@
+<?php
+session_start();
+if (!isset($_SESSION['userid']) || !isset($_SESSION['userrole'])) {
+    header("Location: login.php");
+    exit();
+}
+if ($_SESSION['userrole'] != 'admin') {
+    header("Location: login.php");
+    exit();
+}
+// Use username set in login.php or default to 'Admin'
+$username = $_SESSION['username'] ?? 'Admin';
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard | Tap in Tap Out</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Dashboard CSS */
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#f8fafc 0,#e2e8f0 100%);min-height:100vh;padding:1rem}
+        .dashboard{max-width:1200px;margin:0 auto;background:white;border-radius:24px;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,0.15)}
+        /* Admin Header Gradient */
+        .header{background:linear-gradient(135deg,#dc2626,#b91c1c);color:white;padding:2rem;position:relative;overflow:hidden}
+        .header::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#facc15,transparent)}
+        .header-content{display:flex;justify-content:space-between;align-items:center;max-width:1000px;margin:0 auto}
+        .welcome{font-size:1.8rem;font-weight:700}
+        .user-info{text-align:right}
+        .user-email{font-size:0.9rem;opacity:0.9}
+        .logout{background:rgba(255,255,255,0.2);color:white;padding:0.6rem 1.5rem;border-radius:999px;text-decoration:none;font-weight:500;border:1px solid rgba(255,255,255,0.3);transition:all 0.3s;display:inline-block;margin-top:0.5rem}
+        .logout:hover{background:rgba(255,255,255,0.3);transform:translateY(-2px)}
+        .content{padding:2.5rem;max-width:1000px;margin:0 auto}
+        .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-bottom:2.5rem}
+        .stat-card{background:white;border-radius:20px;padding:1.8rem;box-shadow:0 10px 30px rgba(0,0,0,0.08);transition:transform 0.3s;color:white}
+        .stat-card:hover{transform:translateY(-8px)}
+        .stat-icon{width:60px;height:60px;border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;font-size:1.5rem;background:rgba(255,255,255,0.2)}
+        .stat-number{font-size:2.2rem;font-weight:700;margin-bottom:0.3rem}
+        .stat-label{font-weight:500;opacity:0.9}
+        
+        /* Admin Card Colors */
+        .card-users{background:linear-gradient(135deg,#dc2626,#b91c1c)}
+        .card-revenue{background:linear-gradient(135deg,#eab308,#ca8a04)}
+        .card-journeys{background:linear-gradient(135deg,#059669,#047857)}
+
+        .quick-actions{display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:2.5rem}
+        .btn{padding:1rem 2rem;border-radius:16px;font-weight:600;text-decoration:none;transition:all 0.3s;display:inline-flex;align-items:center;gap:0.8rem;font-size:0.95rem;cursor:pointer}
+        .btn-primary{background:linear-gradient(135deg,#dc2626,#b91c1c);color:white;box-shadow:0 10px 25px rgba(220,38,38,0.3)}
+        .btn-primary:hover{transform:translateY(-4px);box-shadow:0 15px 35px rgba(220,38,38,0.4)}
+        .btn-outline{background:transparent;border:2px solid #dc2626;color:#dc2626}
+        .btn-outline:hover{background:#dc2626;color:white}
+        
+        .recent-journeys{background:white;border-radius:20px;padding:2rem;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.08)}
+        .section-title{font-size:1.4rem;font-weight:600;color:#0f172a;margin-bottom:1.5rem}
+        
+        @media(max-width:768px){
+            .header-content,.quick-actions{flex-direction:column;gap:1rem;text-align:center}
+            .user-info{text-align:center}
+            .stats-grid{grid-template-columns:1fr}
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <header class="header">
+            <div class="header-content">
+                <div class="welcome">
+                    Welcome, <strong><?php echo htmlspecialchars($username); ?></strong>
+                </div>
+                <div class="user-info">
+                    <div class="user-email"><?php echo htmlspecialchars($_SESSION['useremail']); ?></div>
+                    <a href="logout.php" class="logout">Logout</a>
+                </div>
+            </div>
+        </header>
+
+        <main class="content">
+            <div class="stats-grid">
+                <div class="stat-card card-users">
+                    <div class="stat-icon">👥</div>
+                    <div class="stat-number">127</div>
+                    <div class="stat-label">Total Users</div>
+                </div>
+                <div class="stat-card card-revenue">
+                    <div class="stat-icon">💰</div>
+                    <div class="stat-number">$12,450</div>
+                    <div class="stat-label">Total Revenue</div>
+                </div>
+                <div class="stat-card card-journeys">
+                    <div class="stat-icon">🚌</div>
+                    <div class="stat-number">1,247</div>
+                    <div class="stat-label">Total Journeys</div>
+                </div>
+            </div>
+
+            <div class="quick-actions">
+                <a href="#" class="btn btn-primary">➕ Create Moderator</a>
+                <a href="#" class="btn btn-primary">📊 System Reports</a>
+                <a href="#" class="btn btn-outline">✅ Approve Requests</a>
+                <a href="#" class="btn btn-outline">📢 Send Notice</a>
+            </div>
+
+            <section class="recent-journeys">
+                <h2 class="section-title">Pending Route Changes (5)</h2>
+                <!-- Placeholder for dynamic content -->
+                <div style="padding:1rem;background:#f8fafc;border-radius:12px;color:#64748b;text-align:center;">
+                    No pending requests at the moment.
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tap in Tap Out | Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --accent: #facc15;
+            --text-light: #f1f5f9;
+            --text-gray: #94a3b8;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: radial-gradient(circle at top, #1e293b 0, #020617 100%);
+            color: var(--text-light);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #60a5fa, #2563eb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links .btn-login {
+            background: var(--primary);
+            padding: 0.6rem 1.5rem;
+            border-radius: 999px;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .nav-links .btn-login:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 5% 4rem;
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(37, 99, 235, 0.5);
+        }
+
+        /* Developers Section */
+        .team-section {
+            padding: 4rem 5%;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            font-weight: 600;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .dev-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .dev-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .dev-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #334155, #1e293b);
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        .dev-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .dev-role {
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .dev-info {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            border-top: 1px solid var(--border);
+            padding-top: 1rem;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border);
+            margin-top: 2rem;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; } /* Simplified for mobile */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Tap in Tap Out</div>
+        <div class="nav-links">
+            <a href="login.php" class="btn-login">Login</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <h1>Smart Transit <br><span>Made Simple</span></h1>
+        <p>
+            Tap in Tap Out is a next-generation automated ticketing system designed 
+            to streamline public transportation. Track your journeys, manage your wallet, 
+            and travel seamlessly with just a tap.
+        </p>
+        <div class="hero-btns">
+            <a href="login.php" class="btn btn-primary">Start Your Journey</a>
+        </div>
+    </header>
+
+    <!-- Developers Section -->
+    <section class="team-section">
+        <h2 class="section-title">Meet the Developers</h2>
+        <div class="team-grid">
+            
+            <!-- MD RAFIT -->
+            <div class="dev-card">
+                <img src="rafit.jpg" alt="MD RAFIT" class="dev-avatar-img" loading="lazy">
+                <h3 class="dev-name">MD RAFIT</h3>
+                <div class="dev-role">Team Lead</div>
+                <div class="dev-info">
+                    <p>ID: 23-50418-1</p>
+                    <p>Dept: CSE</p>
+                </div>
+            </div>
+
+            <!-- Developer 2 -->
+            <div class="dev-card">
+                <img src="developer2.jpg" alt="Developer 2" class="dev-avatar-img" loading="lazy">
+                <h3 class="dev-name">MD RAIHANUL ISLAM RUDRA</h3>
+                <div class="dev-role">Backend Developer</div>
+                <div class="dev-info">
+                    <p>ID: 23-1-XX</p>
+                    <p>Dept: CSE</p>
+                </div>
+            </div>
+
+            <!-- Developer 3 (Placeholder) -->
+            <div class="dev-card">
+                <div class="dev-avatar">🎨</div>
+                <h3 class="dev-name">KAMRUN NAHAR OMI</h3>
+                <div class="dev-role">Frontend Dev</div>
+                <div class="dev-info">
+                    <p>ID: 23-1-XX</p>
+                    <p>Dept: CSE</p>
+                </div>
+            </div>
+
+            <!-- Developer 4 (Placeholder) -->
+            <div class="dev-card">
+                <div class="dev-avatar">📊</div>
+                <h3 class="dev-name">ZARIN TASNIM LEANA</h3>
+                <div class="dev-role">Database Admin</div>
+                <div class="dev-info">
+                    <p>ID: 23-1-XX</p>
+                    <p>Dept: CSE</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="footer">
+        &copy; 2026 Tap in Tap Out. All rights reserved.
+    </footer>
+
+</body>
+</html>
