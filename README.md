@@ -1,1 +1,2 @@
-# Tap-In-Tap-Out-Smart-fare-collection-system
+## 📌 Citation
+If you use this project, please give proper credit.
